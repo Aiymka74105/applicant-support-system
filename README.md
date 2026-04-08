@@ -1,24 +1,32 @@
-﻿# Information System for Admission of University Applicants
+# Информационная система сопровождения абитуриентов (Kozybaev University)
 
-This project focuses on the development of an information system that automates the admission process of a higher education institution.
+Этот проект представляет собой минимально жизнеспособную версию (MVP) серверной части информационной системы для автоматизации процесса приема абитуриентов в высшее учебное заведение.
 
-## Goal
-To simplify the admission process and reduce the workload of the admission committee by providing a single source of truth for applicants.
+## 🎯 Цель проекта
+Упростить процесс поступления и снизить нагрузку на приемную комиссию за счет автоматизированной проверки и хранения данных абитуриентов.
 
-## Domain
-Education (Higher Education)
+## ⚙️ Текущий функционал (Beta-версия)
+На данном этапе реализована изолированная бизнес-логика и слой хранения данных (Backend):
+* **Модуль хранения данных (`database.py`):** Запись и извлечение данных абитуриента (ИИН, ФИО, программа, балл ЕНТ) с использованием СУБД SQLite. Реализована защита от дубликатов по первичному ключу (ИИН).
+* **Модуль бизнес-логики (`logic.py`):** Обработка данных и принятие решений о прохождении по конкурсу на основе проходных баллов образовательных программ (ИТ, Педагогика, Агрономия и т.д.).
+* **Архитектурный паттерн:** Строгое разделение бизнес-логики и интерфейса/данных.
 
-## Key Features
-* 📅 **Info Hub:** Centralized access to admission rules, deadlines, and list of majors.
-* ❓ **Support:** FAQ section and direct feedback form for applicant inquiries.
-* 📢 **Communication:** News feed and official announcements.
-* ⚙️ **Management:** Content moderation tools for updating information.
+## 🛠 Технологии
+* **Язык:** Python 3
+* **База данных:** SQLite (встроенная)
+* **Тестирование:** `pytest` (Unit и интеграционные тесты)
+* **Контроль качества (Code Style):** `flake8` (соответствие стандарту PEP8)
 
-## User Roles
-* **Applicant:** Views information, tracks deadlines, and asks questions.
-* **Moderator:** Updates content, publishes news, and answers inquiries.
-* **Admin:** Manages users and system settings.
+## 📂 Структура проекта
+* `/src/database.py` — Работа с базой данных SQLite.
+* `/src/logic.py` — Бизнес-логика проверки статуса абитуриента.
+* `/src/test_app.py` — Сценарии модульного и интеграционного тестирования.
+* `/src/report.md` — Отчет по стратегии тестирования.
+* `requirements.txt` — Зависимости проекта.
 
-## Development Process
-* **Methodology:** Agile (Iterative approach).
-* **Team Composition:** Project Manager, System Analyst, Developer, QA.
+## 🚀 Инструкция по запуску и проверке
+
+### 1. Установка зависимостей
+Убедитесь, что у вас установлен Python. Склонируйте репозиторий и установите библиотеки для тестирования и контроля качества:
+```bash
+pip install -r src/requirements.txt
